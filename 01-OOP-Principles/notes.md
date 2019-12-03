@@ -76,6 +76,7 @@ person.greet = function() {
 ## Properties
 
 - Object: person
+
 ```js
 var person = {
   name: "John",
@@ -89,6 +90,7 @@ var person = {
 ```
 
 - Add properties `-`
+
 ```js
 var person = {
   name: "John",
@@ -163,6 +165,7 @@ console.log(obj);
 ### Method
 
 - function assiged method
+
 ```js
 var person = {
   name: "John",
@@ -203,6 +206,7 @@ Info: End process (3:44:25 PM)
 ```
 
 - Method in object
+
 ```js
 var person = {
   name: "John",
@@ -240,14 +244,13 @@ Info: End process (3:45:25 PM)
 */
 ```
 
---- 
+---
 
 ### Defining Object Constructors
 
 - Creating multiple objects of the same type using object literals is not the best approach:
 
-
-- **Part 1**
+* **Part 1**
 
 ```js
 var johnSmith = {
@@ -308,6 +311,7 @@ marioRossi.surname = "Rossi";
 ```
 
 - Constructor with parameters
+
 ```js
 /*
 
@@ -447,7 +451,8 @@ var johnSmith = new Person("John", "Smith");
 ```
 
 - class assign to valiable
-- 
+-
+
 ```js
 var Person = class {
   constructor(name, surname) {
@@ -486,8 +491,8 @@ johnSmith.displayFullName();
   - **Agregation**: Object's calpabliti to embed one or more independent objects
   - **Composition**: Object's capbility to embed one or more dependent objects
 
+* **Requirement 2:** The support of a few principles that grant modularity and code reuse
 
-- **Requirement 2:** The support of a few principles that grant modularity and code reuse
   - **Encapsulation**: Capability to concentrate into a single entity data and code that manipulates it, hiding its interal details
   - **Inheritance**: Mechanism by which an object acquires some or all features from one or more other objects
   - **Polymorphism**: This is the capabltity to process objects differenrly base on their data type or structure
@@ -543,8 +548,6 @@ Person {
 Info: End process (4:29:47 PM)
 
 */
-
-
 ```
 
 ### Aggregation
@@ -586,7 +589,6 @@ Info: End process (4:34:16 PM)
 */
 ```
 
-
 ### Composition
 
 - Composition is a strong type of aggregation, where each component object has no independent life without its owner, the aggreate:
@@ -601,8 +603,6 @@ var person = {
     country: "United Kingdom"
   }
 };
-
-
 ```
 
 ---
@@ -618,11 +618,12 @@ var person = {
 - The encapsulation principle allows an object to expose just what is needed to use it, hiding the complexity if its implementation:
 
 **Code 1**
+
 ```js
 var company = {
   name: "",
   employees: [],
-  sortEmployeesByName: function() { }
+  sortEmployeesByName: function() {}
 };
 ```
 
@@ -648,7 +649,6 @@ function Company(name) {
 }
 
 var company = new Company("ACME Inc.");
-
 ```
 
 **Information Hiding**
@@ -657,12 +657,11 @@ var company = new Company("ACME Inc.");
 - It deals with the accessibility to an object's members, in particular to properties
 - It allows different access levels to the members of an object
 
-
 **Inheritance**
 
 - Inheritance enables new objects to acqire the properties of existing objects:
 - Abstraction
-  - Person 
+  - Person
   - Name
   - Surname
 - Programmer
@@ -671,7 +670,6 @@ var company = new Company("ACME Inc.");
   - KnownLanguage
 
 ```js
-
 function Person(name, surname) {
   this.name = name;
   this.surname = surname;
@@ -684,9 +682,7 @@ function Programmer(knownLanguage) {
 Programmer.prototype = new Person();
 
 var programmer = new Programmer("JavaScript");
-
 ```
-
 
 **Polymorphism**
 
@@ -696,8 +692,8 @@ var programmer = new Programmer("JavaScript");
 - Methods of generic types, not known in advance (parametric polymorphism)
 - Expressions whose type can be represented by a classes and classes derived from it (subtype polymorphism or inclusion polymorphism)
 
-
 **C#**
+
 ```c#
 
 public int Sum(int x, int y) {
@@ -725,7 +721,7 @@ function Sum(x, y, z) {
 
 ```js
 function Sum(x = 0, y = 0, z = 0) {
-  return x + y + z
+  return x + y + z;
 }
 ```
 
@@ -748,35 +744,75 @@ function Sum(x = 0, y = 0, z = 0) {
 ### Quiz 1: Test your knowledge
 
 1. What are the restrictions for JavaScript variable name?
-- JavaScript variables can contain letters, digits, underscores (_), and dollar symbols ($)
+
+- JavaScript variables are case-insensitive ❌
+- JavaScript variables can start with an exclamation mark ❌
+- JavaScript variables can contain `:` (colon) characters ❌
+- JavaScript variables can contain letters, digits, underscores
+  (\_), and dollar symbols (\$) ❎
 
 2. What OOP is and how you can ascertain if a programming language is OOP or not?
-- The OOP paradigm is not based on a formal standard specification.
 
+- A programming language is considered to be object oriented if it has prototypes. ❌
+- If the code written using a programming language can be executed in the browser, it's considered to be object oriented. ❌
+- A programming language is object oriented if it supports direct integration with databases. ❌
+- The OOP paradigm is not based on a formal standard specification. ❎
 
 3. Which of the following are correct names for an object property?
-- name_surname
+
+- e-mail
+- name_surname ❎
+- phone number
 
 4. What is a correct way to define a method on an object?
 
+1 ❎
+
 ```js
-var person = {}
+var person = {};
 person.greet = function() {
-  return 'Hello';
-}
+  return "Hello";
+};
 
 var person = {
   greet: function() {
-    return 'Hello';
+    return "Hello";
   }
 };
 ```
 
+2 ❌
+
+```js
+var person = function greet() {
+  return "Hello";
+};
+
+var greet = function() {
+  return "Hello";
+};
+
+var person = Object.prototype.greet;
+person.greet = greet;
+```
+
 5. What is an object constructor?
-- A function that defines the structure of an object
+
+- An object that builds other objects ❌
+- The new perator ❌
+- A function that defines the structure of an object ❎
+- A function that return an object ❌
 
 6. Which of the following sentences are true?
-- These assignments are equivalent: `var x = new Object()` and `var x = {}`
+
+- These assignments are equivalent: `var x = new Object()` and `var x = {}` ❎
+- A prototype the only way to create objects in JavaScropt. ❌
+- A class is required by protoypes. ❌
+- JavaScript has native support for classes. ❌
 
 7. Which of the following sentences is not true?
-- Polymorphism is the ability to define an object in many ways
+
+- Encapsulation allows hiding the complexity of implementation of an object ❌
+- Inheritance enables new objects to acquire properties of existing object ❌
+- Polymorphism is the ability to define an object in many ways ❎
+- In classical OOP, it is not possible to change an object structure at runtime ❌
